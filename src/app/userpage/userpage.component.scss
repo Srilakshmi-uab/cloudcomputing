@@ -1,0 +1,23 @@
+.container {
+ 
+  background-image: url('https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwxMDY1OTc2fHxlbnwwfHx8fHw%3D&w=1000&q=80');
+
+  /* Adjust background size */
+  background-size: cover;
+  
+  /* Apply a dark overlay to the image */
+  background-color: rgba(0, 0, 0, 0.6);
+
+  /* Add some text shadow for better readability */
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Optional: Add hover effect to the buttons */
+.btn-primary {
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  transform: scale(1.1);
+}

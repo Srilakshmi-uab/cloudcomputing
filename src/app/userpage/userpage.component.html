@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-center mt-5 pt-5">
+    <button
+      class="btn btn-primary mr-2"
+      (click)="currentSection = 'subscription'"
+    >
+      Send Subscription
+    </button>
+    <span> &nbsp; | &nbsp;</span>
+    <button class="btn btn-primary ml-2" (click)="currentSection = 'upload'">
+      File Upload
+    </button>
+  </div>
+
+  <section class="mt-5 pb-4" *ngIf="currentSection === 'subscription'">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="p-3 border border-dark mt-4">
+          <textarea
+            class="form-control mt-5"
+            [(ngModel)]="listOfEmails"
+            [placeholder]="
+              'Please Enter Emails ( upto 5, separating by commas[,])'
+            "
+            id="emails"
+            name="Emails"
+            rows="4"
+          ></textarea>
+
+          <div class="d-flex justify-content-end mt-4">
+            <button
+              class="btn btn-primary"
+              [disabled]="!listOfEmails"
+              (click)="sendingSubscriptions()"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-5 pb-4" *ngIf="currentSection === 'upload'">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="p-3 border border-dark mt-4">
+          <input
+            type="file"
+            class="form-control-file mt-5"
+            (change)="selectionOfFile($event)"
+          />
+
+          <div class="d-flex justify-content-end mt-4">
+            <button class="btn btn-primary" (click)="fileUploading()">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
