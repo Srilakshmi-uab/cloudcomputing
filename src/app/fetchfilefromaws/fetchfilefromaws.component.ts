@@ -18,9 +18,9 @@ constructor(
     public router: Router
   ) {}
 
-  ngOnInit() {
-    this.processFileDownload();
-  }
+  // ngOnInit() {
+  //   this.processFileDownload();
+  // }
 
   processFileDownload() {
     const urlParts = this.router.url.split(this.splitFetch)[1].split(this.splitUrl);
@@ -56,5 +56,45 @@ constructor(
     anchor.click();
   }
 
+
+   ngOnInit() {
+    let url = this.router.url.split('download')[1].split('_path_');
+
+    let payload = {
+      url:
+        `https://smalempabucket.s3.us-east-2.amazonaws.com/` +
+        this.router.url.split('download')[1].split('_path_')[1],
+      userId: url[0].replace('token%3D', '').replace('/', ''),
+    };
+    this.authenticationService.updatingCount(payload).subscribe({
+      next: (response: any) => {
+        if (response.data == true) {
+          this.downloadFile(payload.url);
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+    console.log(payload);
+  }
+  downloadFile(url: string) {
+    // Create a hidden anchor element
+
+    const anchor = document.createElement('a');
+    anchor.style.display = 'none';
+
+    // Set the URL as the href attribute
+    anchor.href = url;
+
+    // Add the anchor to the document
+    document.body.appendChild(anchor);
+    console.log(anchor);
+    // Simulate a click event on the anchor to trigger the download
+    anchor.click();
+
+    // Clean up: remove the anchor from the document
+    document.body.removeChild(anchor);
+  }
 }
 

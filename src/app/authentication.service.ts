@@ -11,9 +11,9 @@ export class AuthenticationService {
     return this.http.post(`${environment.baseURL}/upload`, payload);
   }
   sendingSubscriptionMails(payload: Array<any>) {
-    return this.http.post(`${environment.baseURL}/subscriptions/send`, payload);
+    return this.http.post(`${environment.baseURL}/send/subscriptions`, payload);
   }
   updatingCount(payload: any) {
-    return this.http.post(`${environment.baseURL}/count`, payload);
+    return this.http.post(`${environment.baseURL}/countClicks`, payload);
   }
 }

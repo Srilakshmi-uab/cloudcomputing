@@ -5,8 +5,8 @@ import { FetchfilefromawsComponent } from './fetchfilefromaws/fetchfilefromaws.c
 
 const routes: Routes = [
   { path: '', component:UserpageComponent  },
-  { path: 'fetch/:userpath', component: FetchfilefromawsComponent },
-  { path: 'fetch', component: FetchfilefromawsComponent },
+  { path: 'dashboard/:userpath', component: FetchfilefromawsComponent },
+  { path: 'dashboard', component: FetchfilefromawsComponent },
 ];
 
 @NgModule({
