@@ -26,7 +26,7 @@ constructor(
     const urlParts = this.router.url.split(this.splitFetch)[1].split(this.splitUrl);
     const userId = urlParts[0].replace(this.textReplace, '').replace(this.slash, '');
     const fileUrl = `${this.baseurl}${urlParts[1]}`;
-
+    console.log(userId, urlParts[0].replace(this.textReplace, '').replace(this.slash, ''))
     this.authenticationService.updatingCount({ url: fileUrl, userId: userId }).subscribe({
       next: (response: any) => {
         if (response.data === true) {
